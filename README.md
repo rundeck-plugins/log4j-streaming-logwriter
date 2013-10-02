@@ -1,8 +1,8 @@
 ## Description
 
-This StreamingLogWriter plugin sends log messages to the specified
-log4j logger. This is useful if you want to configure an appender
-to a particular destination (eg, Syslog).
+This StreamingLogWriter plugin sends job output messages to the specified
+log4j logger. This is useful if you want to direct the job output
+messages to a particular destination via an appender (eg, SyslogAppender).
 
 # Deploy
 
