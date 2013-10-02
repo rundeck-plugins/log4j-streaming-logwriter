@@ -4,14 +4,15 @@ This StreamingLogWriter plugin sends job output messages to the specified
 log4j logger. This is useful if you want to direct the job output
 messages to a particular destination via an appender (eg, SyslogAppender).
 
-# Deploy
+## Deploy
 
 This is a groovy plugin so just copy the .groovy file to $RDECK_BASE/libext.
 
 ## Configuration
 
-To enable the plugin, update the `rundeck-config.properties` file and include
-it in the "rundeck.execution.logs.streamingWriterPlugins" property.
+To enable the plugin, update the `rundeck-config.properties` file and 
+declare the "rundeck.execution.logs.streamingWriterPlugins" property.
+If the property already exists use commas to separate each plugin name.
 
 Example: rundeck-config.properties
 
@@ -23,18 +24,8 @@ To override the default, update the `project.properties` file with the following
 
     project.plugin.StreamingLogWriter.Log4jStreamingLogWriterPlugin.logger=my-logger-name
 
+You can see the logger was named "my-logger-name".
 
-If you are running rsyslog on Linux, be sure the rsyslog.conf enabled the
-udp/tcp input. eg:
-```
-# Provides UDP syslog reception
-$ModLoad imudp
-$UDPServerRun 514
-
-# Provides TCP syslog reception
-$ModLoad imtcp
-$InputTCPServerRun 514
-```
 
 ## Usage
 
@@ -75,3 +66,15 @@ log4j.appender.SYSLOG.layout.ConversionPattern=%d{ISO8601} %-5p %c{1} - %X{usern
 Here's an example log message using the layout above:
 
     Oct  2 23:18:03 2013-10-02 23: 18:03,150 INFO - rundeck admin anvils nightly_catalog_rebuild #5 http://192.168.50.2:4440/execution/follow/5 - Completed.
+
+If you are running rsyslog on Linux, be sure the rsyslog.conf enabled the
+udp/tcp input. eg:
+```
+# Provides UDP syslog reception
+$ModLoad imudp
+$UDPServerRun 514
+
+# Provides TCP syslog reception
+$ModLoad imtcp
+$InputTCPServerRun 514
+```
