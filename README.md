@@ -2,7 +2,8 @@
 
 This StreamingLogWriter plugin sends job output messages to the specified
 log4j logger. This is useful if you want to direct the job output
-messages to a particular destination via an appender (eg, SyslogAppender).
+messages to a particular destination via an [appender](http://logging.apache.org/log4j/2.x/manual/appenders.html)
+(eg, SyslogAppender).
 
 ## Deploy
 
@@ -19,8 +20,8 @@ Example: rundeck-config.properties
     rundeck.execution.logs.streamingWriterPlugins=Log4jStreamingLogWriterPlugin
 
 
-You can name the log4j logger anything you wish. By default, it is called "rundeck".
-To override the default, update the `project.properties` file with the following entry:
+You can name the log4j logger anything you wish. By default, it is named "rundeck".
+To override the default name, update the `project.properties` file with the following entry:
 
     project.plugin.StreamingLogWriter.Log4jStreamingLogWriterPlugin.logger=my-logger-name
 
