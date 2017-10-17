@@ -57,7 +57,9 @@ rundeckPlugin(StreamingLogWriterPlugin) {
         }
         MDC.put("username", context.execution.username)
         MDC.put("name", context.execution.name)
-        MDC.put("group", context.execution.group)
+        if (context.execution.group != null) {
+            MDC.put("group", context.execution.group)
+        }
         MDC.put("execid", context.execution.execid)
         MDC.put("project", context.execution.project)
         MDC.put("id", context.execution.id)
